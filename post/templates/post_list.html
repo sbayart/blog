@@ -6,9 +6,9 @@
 
 <ul>
 {% for post in posts %}
-<li>{{post.title}}, créé le {{post.creation_date}} </li>
+<li><a href="http://localhost:5000/post/{{post.id}}">{{post.title}}, créé le {{post.creation_date}}</a></li>
 {% endfor %}
 </ul>
 
-
+<a href="http://localhost:5000/">Get back home.</a>
 {% endblock content %}

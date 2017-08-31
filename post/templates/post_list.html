@@ -3,12 +3,41 @@
 {% block content %}
 
 <h2>Liste des posts</h2>
+<div class="row">
+    {% if request.user.is_authenticated and perms.post.add_post %}
+    <p><a href="{% url "post-create" %}">Créer votre Post</a></p>
+    {% endif %}
+    <form class="" action="{% url "post-list" %}" method="get">
 
-<ul>
-{% for post in posts %}
-<li><a href="http://localhost:5000/post/{{post.id}}">{{post.title}}, créé le {{post.creation_date}}</a></li>
-{% endfor %}
-</ul>
+        <select class="" name="cat">
+            {% for cat in cats %}
+            <option value="{{cat.id}}" {% if cat.id == selected_cat %} selected {%endif%}>{{cat.label}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" name="" value="">Filtrer</button>
+    </form>
+    <ul>
+        {% for post in posts %}
+        <li><a class="post" href="{% url "post-detail" post.slug %}">{{post.title}}</a>créé le {{post.creation_date}}</li>
+        {% endfor %}
+    </ul>
+</div>
 
-<a href="http://localhost:5000/">Get back home.</a>
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+<a class="liens" href="{% url "home" %}">Retour à la page d'accueil</a>
 {% endblock content %}

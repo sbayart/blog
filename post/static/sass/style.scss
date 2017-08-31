@@ -1,0 +1,47 @@
+
+@import "_base";
+@import "bootstrap";
+
+body {
+    background-color: grey;
+    h1, h2 {
+        text-transform: uppercase;
+        font-family: 'Gloria Hallelujah', cursive;
+        text-align: center;
+       }
+    p {
+        color: MediumSeaGreen;
+        font-size: 2em;
+        text-align: right;
+        a {
+           text-decoration: none;
+           color: inherit;
+       }
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        li {
+            list-style-type: none;
+            margin: 1em;
+            border: 0.3em solid black;
+            padding: 1em;
+            border-radius: 1em;
+            text-align: right;
+            .post {
+                font-size: 2em;
+                text-align: center;
+                @include textpost(white);
+                margin: 1em;
+                display: block;
+            }
+        }
+    }
+    .liens {
+        @include textpost(Cornsilk);
+    }
+    #plop>* {
+        @include textpost(Goldenrod);
+        text-align: left;
+    }
+}

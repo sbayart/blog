@@ -1,0 +1,5 @@
+@mixin textpost ($color) {
+    font-family: 'Open Sans', sans-serif;
+    color: $color;
+    text-align: justify;
+}

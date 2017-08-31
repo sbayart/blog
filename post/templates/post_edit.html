@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+
+<form class="" action="{% url "post-edit" post.slug %}" method="post">
+    {% csrf_token %}
+    {%bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">
+          {% bootstrap_icon "star" %} Modifier
+        </button>
+    {% endbuttons %}
+
+</form>
+
+
+<p class="liens"><a href="{% url "home" %}">Retour à la page d'accueil</a></p>
+<p class="liens"><a href="{% url "post-list" %}">Retour à la liste des p'tits posts</a></p>
+{% endblock content %}

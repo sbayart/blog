@@ -2,6 +2,12 @@
 
 {% block content %}
 <h1>Bienvenue sur le bon blog !</h1>
+    {% if request.user.is_authenticated %}
+    <p>Bienvenue {{ request.user.username }}.</p>
+    <p><a href="{% url "logout" %}?next={{request.path}}">Se déconnecter</a></p>
+    {% else %}
+    <p><a href="{% url "login" %}">Se loguer</a></p>
+    {% endif %}
 
-<a href="http://localhost:5000/post/list">View post list</a>
+<p><a href="{% url "post-list" %}">Venez voir nos p'tits posts</a></p>
 {% endblock %}

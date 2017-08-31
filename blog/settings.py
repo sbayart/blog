@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_extensions',
+    'sass_processor',
+    'djangobower',
+    'bootstrap3',
+    'ckeditor',
+    'ckeditor_uploader',
 
     'post'
 ]
@@ -122,3 +127,47 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "blog", "static"),
+    os.path.join(BASE_DIR, "static")
+]
+
+STATICFILES_FINDERS = [
+   'django.contrib.staticfiles.finders.FileSystemFinder',
+   'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+   'sass_processor.finders.CssFinder',
+   'djangobower.finders.BowerFinder',
+]
+
+BOWER_INSTALLED_APPS = (
+   'jquery',
+   'bootstrap-sass',
+   'fontawesome'
+)
+
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, "static"),
+   os.path.join(BASE_DIR, 'blog', 'static'),
+]
+
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static/css')
+
+SASS_PROCESSOR_INCLUDE_DIRS = [
+    os.path.join(BASE_DIR, 'blog', 'static'),
+    os.path.join(BASE_DIR, 'static/bower_components/bootstrap-sass/assets/stylesheets')
+]
+
+SASS_PROCESSOR_ENABLED = True
+
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
+
+CKEDITOR_UPLOAD_PATH = "uploads/"

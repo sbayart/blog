@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+<form class="" action="{% url "post-create" %}" method="post">
+{% csrf_token %}
+
+<!-- {{form.title.label_tag}}
+{{form.title}}
+{{form.body.label_tag}}
+{{form.body}}
+{{form.category.label_tag}}
+{{form.category}} -->
+
+{%bootstrap_form form %}
+
+{% buttons %}
+    <button type="submit" class="btn btn-primary">
+      {% bootstrap_icon "star" %} Submit
+    </button>
+  {% endbuttons %}
+
+{% endblock content %}
